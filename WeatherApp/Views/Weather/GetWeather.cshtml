@@ -1,0 +1,93 @@
+﻿@model WeatherApp.Models.GetWeather
+
+@{
+    ViewData["Title"] = "GetWeather";
+}
+
+<div class="row com" style="@(Model.Weather=="Clear"?"background-image:url('../helpers/tree.jpg');color:black":"background-image:url('../helpers/cloud.jpg');color:White")";
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;color:white">   
+   
+    <div class="col-8" style="margin-top:20px">
+        @if (Model.message == null)
+        {
+            <table style="height:400px;margin-left:80px ">
+                <tbody>
+                    <tr>
+                        <td>
+                            <h4>@DateTime.Now.ToString("dddd") </h4>
+                            <h4>@DateTime.Now.ToString("dd MMMM yyyy") </h4>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2 style="font-size:40px">@Model.Weather</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="font-size:100px;">@((int)Model.Temperature) °C </div>
+                            <span style="font-size:20px">Feels Like @((int)Model.feelsLike) °C</span>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span style="font-size:20px">@Model.Name ,@Model.Country</span>
+                        </td>
+
+                    </tr>
+                    
+                    <tr style="margin-top:20px;">
+                        <td>
+                            <a asp-action="City" class="btn btn-warning">Back to Search</a>
+                        </td>
+                            </tr>
+
+                        </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-danger" style="text-align:center">@Model.message</div>
+            <a asp-action="City" class="btn btn-outline-warning">Back to List</a>
+        }
+
+
+
+        <div>
+
+
+
+        </div>
+    </div>
+    <div class="col-4" >
+    
+        <div class="card text-white bg-secondary mb-2 m-4" style="max-width: 10rem;">
+            <div class="card-header" style="text-align:center"><h5>Humditiy</h5></div>
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center">@Model.Humditiy %</h5>
+            </div>
+        </div>
+
+        <div class="card text-white bg-secondary mb-2 m-4" style="max-width: 10rem;">
+            <div class="card-header" style="text-align:center"><h5>Pressure</h5></div>
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center">@Model.Pressure mbar</h5>
+            </div>
+        </div>
+
+        <div class="card text-white bg-secondary mb-2 m-4" style="max-width: 10rem;">
+            <div class="card-header" style="text-align:center"><h5>Wind Speed</h5></div>
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center">@(((int)(Model.Wind/0.277778))) Km/h</h5>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+ 

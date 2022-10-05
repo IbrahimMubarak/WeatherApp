@@ -1,0 +1,19 @@
+﻿@model WeatherApp.Models.CityModel
+
+<div class="container">
+
+    <form method="post" asp-action="City">
+        <div class="container m-2" style="position:fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+
+            <input asp-for="City" type="text" class="form-control" placeholder="Enter Your City......" style="text-align:center">
+            <span asp-validation-for="City" class="bg-danger" style="color:wheat"></span>
+            <div class="d-flex justify-content-center m-2">
+                <input type="submit" class="btn btn-primary" value="Search" style="width:120px;font-weight:600" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+  }
+ }
